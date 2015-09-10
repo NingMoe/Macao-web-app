@@ -450,7 +450,7 @@ class Zendesk_Wordpress_Admin_Settings {
 
 
     // Nuke login credentials and web widget snippet if account has changed.
-    if ( $settings['account'] !== $zendesk_support->settings['account'] ) {
+    if ( isset($settings['account']) && $settings['account'] !== $zendesk_support->settings['account'] ) {
       // Running a direct SQL query is *way* faster than meta querying users one by one.
       global $wpdb;
       $wpdb->query( "DELETE FROM $wpdb->usermeta WHERE meta_key = 'zendesk_user_options';" );

@@ -4,7 +4,7 @@
  * Plugin URI: http://zendesk.com
  * Description: Zendesk Support for WordPress
  * Author: Zendesk
- * Version: 1.6.2
+ * Version: 1.6.3
  * Author URI: http://www.zendesk.com
  *
  */
@@ -25,6 +25,7 @@ require_once( plugin_dir_path( __FILE__ ) . 'classes/zendesk-wordpress-ajax.php'
 require_once( plugin_dir_path( __FILE__ ) . 'classes/zendesk-wordpress-notices.php' );
 require_once( plugin_dir_path( __FILE__ ) . 'classes/zendesk-wordpress-agents.php' );
 require_once( plugin_dir_path( __FILE__ ) . 'classes/zendesk-wordpress-utilities.php' );
+require_once( plugin_dir_path( __FILE__ ) . 'classes/zendesk-wordpress-url.php' );
 
 /*
  * Zendesk Support Class
@@ -109,7 +110,7 @@ class Zendesk_Support {
 
     $https             = ( isset( $this->settings['ssl'] ) && $this->settings['ssl'] ) ? 'https' : 'http';
     $this->zendesk_url = $https . '://' . $this->settings['account'] . '.zendesk.com';
-    $this->api         = new Zendesk_Wordpress_API( $this->zendesk_url );
+    $this->setApi(new Zendesk_Wordpress_API( $this->zendesk_url ));
 
     // Fill in the Web Widget code if it's empty, we know the account, and they
     // haven't set the widget off
@@ -134,6 +135,10 @@ class Zendesk_Support {
       }
 
     }
+  }
+
+  public function setApi($api) {
+    $this->api = $api;
   }
 
   /*
@@ -165,7 +170,7 @@ class Zendesk_Support {
       $subdomain                        = $this->settings['account'];
       $this->settings['webwidget_code'] = <<<EOJS
 <!-- Start of Zendesk Widget script -->
-<script>/*<![CDATA[*/window.zEmbed||function(e,t){var n,o,d,i,s,a=[],r=document.createElement("iframe");window.zEmbed=function(){a.push(arguments)},window.zE=window.zE||window.zEmbed,r.src="javascript:false",r.title="",r.role="presentation",(r.frameElement||r).style.cssText="display: none",d=document.getElementsByTagName("script"),d=d[d.length-1],d.parentNode.insertBefore(r,d),i=r.contentWindow,s=i.document;try{o=s}catch(c){n=document.domain,r.src='javascript:var d=document.open();d.domain="'+n+'";void(0);',o=s}o.open()._l=function(){var o=this.createElement("script");n&&(this.domain=n),o.id="js-iframe-async",o.src=e,this.t=+new Date,this.zendeskHost=t,this.zEQueue=a,this.body.appendChild(o)},o.write('<body onload="document._l();">'),o.close()}("//assets.zendesk.com/embeddable_framework/main.js","{$subdomain}.zendesk.com");/*]]>*/</script>
+<script>/*<![CDATA[*/window.zEmbed||function(e,t){var n,o,d,i,s,a=[],r=document.createElement("iframe");window.zEmbed=function(){a.push(arguments)},window.zE=window.zE||window.zEmbed,r.src="javascript:false",r.title="",r.role="presentation",(r.frameElement||r).style.cssText="display: none",d=document.getElementsByTagName("script"),d=d[d.length-1],d.parentNode.insertBefore(r,d),i=r.contentWindow,s=i.document;try{o=s}catch(c){n=document.domain,r.src='javascript:var d=document.open();d.domain="'+n+'";void(0);',o=s}o.open()._l=function(){var o=this.createElement("script");n&&(this.domain=n),o.id="js-iframe-async",o.src=e,this.t=+new Date,this.zendeskHost=t,this.zEQueue=a,this.body.appendChild(o)},o.write('<body onload="document._l();">'),o.close()}("https://assets.zendesk.com/embeddable_framework/main.js","{$subdomain}.zendesk.com");/*]]>*/</script>
 <!-- End of Zendesk Widget script -->
 
 EOJS;

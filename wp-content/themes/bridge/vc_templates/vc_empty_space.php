@@ -1,6 +1,6 @@
 <?php
 extract( shortcode_atts( array(
-	'height' => WPBMap::getParam( 'vc_empty_space', 'height' ),
+	'height' => '',
 	'el_class' => '',
 	'background_image' => '',
 	'image_repeat' => ''

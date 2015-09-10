@@ -1716,7 +1716,7 @@ if (!function_exists('latest_post')) {
             }
             if($type != "minimal") {
                 if($text_length != '0') {
-                    $excerpt = ($text_length > 0) ? substr(get_the_excerpt(), 0, intval($text_length)) : get_the_excerpt();
+                    $excerpt = ($text_length > 0) ? mb_substr(get_the_excerpt(), 0, intval($text_length)) : get_the_excerpt();
                     $html .= '<p class="excerpt">'.$excerpt.'...</p>';
                 }
 
@@ -6506,48 +6506,47 @@ if (!function_exists('countdown')) {
             $counter_style .="'";
         }
 
-        $html = "<div class='countdown ".$show_separator."' id='countdown".$id."' ".$counter_style."></div>";
+		$data_attr = "";
+		if ($year !== ''){
+			$data_attr .= 'data-year = '.$year;
+		}
+		if ($month !== ''){
+			$data_attr .= ' data-month = '.$month;
+		}
+		if ($day !== ''){
+			$data_attr .= ' data-day = '.$day;
+		}
+		if ($hour !== ''){
+			$data_attr .= ' data-hour = '.$hour;
+		}
+		if ($minute !== ''){
+			$data_attr .= ' data-minute = '.$minute;
+		}
+		$data_attr .= ' data-monthsLabel = '.$month_label_value;
+		$data_attr .= ' data-daysLabel = '.$day_label_value;
+		$data_attr .= ' data-hoursLabel = '.$hour_label_value;
+		$data_attr .= ' data-minutesLabel = '.$minute_label_value;
+		$data_attr .= ' data-secondsLabel = '.$second_label_value;
+		$data_attr .= ' data-monthLabel = '.$month_singular_label_value;
+		$data_attr .= ' data-dayLabel = '.$day_singular_label_value;
+		$data_attr .= ' data-hourLabel = '.$hour_singular_label_value;
+		$data_attr .= ' data-minuteLabel = '.$minute_singular_label_value;
+		$data_attr .= ' data-secondLabel = '.$second_singular_label_value;
+		$data_attr .= ' data-tickf = setCountdownStyle'. $id;
+		$data_attr .= ' data-timezone = '.get_option('gmt_offset');
 
-        $html .= "<script>
-		var \$j = jQuery.noConflict();
-		\$j(document).ready(function() {
-	        \$j('#countdown".$id."').countdown({
-	            until: new Date( ".$year.", ".$month." - 1, ".$day.", ".$hour.", ".$minute.", 44),
-	            labels: ['Years', '".$month_label_value."', 'Weeks', '".$day_label_value."', '".$hour_label_value."', '".$minute_label_value."', '".$second_label_value."'],
-	            labels1: ['Year', '" . $month_singular_label_value . "', 'Week', '" . $day_singular_label_value . "', '" . $hour_singular_label_value . "', '" . $minute_singular_label_value . "', '" . $second_singular_label_value . "'],
-                format: 'ODHMS',
-	            timezone: ".get_option('gmt_offset').",
-	            padZeroes: true,
-	            ";
-	            if($digit_font_size != "" || $digit_font_size != "" || $color != "") {
-                    $html .= "
-                    onTick: setCountdownStyle". $id ."";
-                }
-            $html .= "
-            });";
-            if($digit_font_size != "" || $digit_font_size != "" || $color != "") {
-                $html .= "function setCountdownStyle". $id ."(){";
-                    if($digit_font_size != "") {
-                        $html .= "
-                        \$j('#countdown" . $id . " .countdown-amount').css('font-size','" . $digit_font_size . "px').css('line-height','" . $digit_font_size . "px');
-                        ";
-                    }
-                    if($label_font_size != "") {
-                        $html .= "
-                        \$j('#countdown" . $id . " .countdown-period').css('font-size','" . $label_font_size . "px');
-                        ";
-                    }
-                    if($color != "") {
-                        $html .= "
-                        \$j('#countdown" . $id . " .countdown_separator').css('background-color','" . $color . "');
-                        ";
-                    }
-                $html .= "}";
-            }
+		if ($digit_font_size !== ''){
+			$data_attr .= ' data-digitfs = '.$digit_font_size;
+		}
+		if ($label_font_size !== ''){
+			$data_attr .= ' data-labelfs = '.$label_font_size;
+		}
+		if ($color !== ''){
+			$data_attr .= ' data-color = '.$color;
+		}
 
-        $html .= "
-        });
-	    </script>";
+		$html = "<div class='countdown ".$show_separator."' id='countdown".$id."' ".$counter_style." ".$data_attr."></div>";
+
         return $html;
     }
 }

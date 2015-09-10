@@ -12,9 +12,6 @@ function perPageBindings () {
 	initQodeSlider();
 	initQodeCarousel();
 	initMessageHeight();
-	initToCounter();
-	initCounter();
-	initProgressBars();
 	initListAnimation();
 	initPieChart();
 	initPieChartWithIcon();
@@ -71,6 +68,10 @@ function perPageBindings () {
     setActiveTabBorder();
     initImageGallerySliderNoSpace();
     initVerticalSplitSlider();
+	initToCounter();
+	initCounter();
+	initCountdown();
+	initProgressBars();
     initPageTitleAnimation();
     initQodeElementAnimationSkrollr();
     initIconShortcodeHover();

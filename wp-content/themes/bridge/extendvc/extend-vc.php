@@ -2,6 +2,7 @@
 
 global $qodeIconCollections;
 
+
 /*** Removing shortcodes ***/
 vc_remove_element("vc_widget_sidebar");
 vc_remove_element("vc_wp_search");
@@ -32,6 +33,11 @@ vc_remove_element("vc_posts_grid");
 vc_remove_element("vc_carousel");
 vc_remove_element("vc_btn");
 vc_remove_element("vc_cta");
+vc_remove_element("vc_round_chart");
+vc_remove_element("vc_line_chart");
+vc_remove_element("vc_tta_accordion");
+vc_remove_element("vc_tta_tour");
+vc_remove_element("vc_tta_tabs");
 
 //Remove Grid Elements if disabled
 if (!qode_vc_grid_elements_enabled() && version_compare(qode_get_vc_version(), '4.4.2') >= 0) {
@@ -51,6 +57,11 @@ if(!qode_vc_grid_elements_enabled()) {
 if (function_exists('vc_remove_param')) {
 	vc_remove_param('vc_single_image', 'css_animation');
 	vc_remove_param('vc_column_text', 'css_animation');
+	vc_remove_param('vc_row', 'video_bg');
+	vc_remove_param('vc_row', 'video_bg_url');
+	vc_remove_param('vc_row', 'video_bg_parallax');
+	vc_remove_param('vc_row', 'full_height');
+	vc_remove_param('vc_row', 'content_placement');
 	vc_remove_param('vc_row', 'full_width');
 	vc_remove_param('vc_row', 'bg_image');
 	vc_remove_param('vc_row', 'bg_color');
@@ -163,6 +174,7 @@ vc_add_param("vc_accordion", array(
         "Boxed Accordion"       => "boxed_accordion",
         "Boxed Toggle"          => "boxed_toggle"
 	),
+	'save_always' => true,
 	"description" => ""
 ));
 
@@ -225,6 +237,7 @@ vc_add_param("vc_tabs", array(
 		"Vertical Left" => "vertical_left",
 		"Vertical Right" => "vertical_right"
 	),
+	'save_always' => true,
 	"description" => ""
 ));
 
@@ -236,6 +249,7 @@ vc_add_param("vc_gallery", array(
 	"heading" => "Column Number",
 	"param_name" => "column_number",
 	 "value" => array(2, 3, 4, 5, "Disable" => 0),
+	'save_always' => true,
 	 "dependency" => Array('element' => "type", 'value' => array('image_grid'))
 ));
 
@@ -245,6 +259,7 @@ vc_add_param("vc_gallery", array(
     "heading" => "Grayscale Images",
     "param_name" => "grayscale",
     "value" => array('No' => 'no', 'Yes' => 'yes'),
+	'save_always' => true,
     "dependency" => Array('element' => "type", 'value' => array('image_grid'))
 ));
 
@@ -269,6 +284,7 @@ vc_add_param("vc_gallery", array(
 	"heading" => "Choose Frame",
 	"param_name" => "choose_frame",
 	"value" => array('Default' => 'default', 'Frame 1' => 'frame1', 'Frame 2' => 'frame2'),
+	'save_always' => true,
 	"dependency" => Array('element' => "frame", 'value' => array('use_frame'))
 ));
 vc_add_param("vc_gallery", array(
@@ -277,6 +293,7 @@ vc_add_param("vc_gallery", array(
 	"heading" => "Spaces between images",
 	"param_name" => "images_space",
 	"value" => array('No' => 'gallery_without_space', 'Yes' => 'gallery_with_space'),
+	'save_always' => true,
 	"dependency" => Array('element' => "type", 'value' => array('image_grid'))
 ));
 
@@ -302,6 +319,7 @@ vc_add_param("vc_empty_space",  array(
             'Repeat y' => 'repeat-y',
             'Repeat (x y)' => 'repeat'
         ),
+		'save_always' => true,
         'description' =>'',
         'dependency' => array('element' => 'background_image','not_empty' => true)
     )
@@ -320,7 +338,8 @@ vc_add_param("vc_row", array(
 		"Parallax" => "parallax",
 		"Expandable" => "expandable",
 		"Content menu" => "content_menu"
-	)
+	),
+	'save_always' => true
 ));
 
 vc_add_param("vc_row", array(
@@ -333,6 +352,7 @@ vc_add_param("vc_row", array(
 		"No" => "no",
 		"Yes" => "yes"
 	),
+	'save_always' => true,
 	"description" => "This option works only for Full Screen Sections Template",
 	"dependency" => Array('element' => "row_type", 'value' => array('row'))
 ));
@@ -346,6 +366,7 @@ vc_add_param("vc_row", array(
 		"Full Width" => "full_width",
 		"In Grid" => "grid"		
 	),
+	'save_always' => true,
 	"dependency" => Array('element' => "row_type", 'value' => array('row'))
 ));
 
@@ -371,6 +392,7 @@ vc_add_param("vc_row", array(
 		"In Grid" => "in_grid",
 		"Full Width" => "full_width"
 	),
+	'save_always' => true,
 	"dependency" => Array('element' => "row_type", 'value' => array('parallax'))
 ));
 
@@ -409,6 +431,7 @@ vc_add_param("vc_row", array(
 	"heading" => "Content menu icon",
 	"param_name" => "content_menu_icon",
 	"value" => $icons,
+	'save_always' => true,
 	"description" => "",
 	"dependency" => Array('element' => "in_content_menu", 'value' => array('in_content_menu'))
 ));
@@ -422,6 +445,7 @@ vc_add_param("vc_row", array(
 		'No' => 'no',
 		'Yes' => 'yes'
 	),
+	'save_always' => true,
 	"description" => "",
 	"dependency" => Array('element' => "row_type", 'value' => array('row'))
 ));
@@ -435,6 +459,7 @@ vc_add_param("vc_row", array(
 		'Only Top' => 'top',
 		'Only Bottom' => 'bottom'
 	),
+	'save_always' => true,
 	"description" => "",
 	"dependency" => Array('element' => "angled_section", 'value' => array('yes'))
 ));
@@ -447,6 +472,7 @@ vc_add_param("vc_row", array(
 		'From Left To Right' => 'from_left_to_right',
 		'From Right To Left' => 'from_right_to_left'
 	),
+	'save_always' => true,
 	"description" => "",
 	"dependency" => Array('element' => "angled_section", 'value' => array('yes'))
 ));
@@ -462,6 +488,7 @@ vc_add_param("vc_row", array(
 		"Center" => "center",
 		"Right" => "right"
 	),
+	'save_always' => true,
 	"dependency" => Array('element' => "row_type", 'value' => array('row','parallax','expandable'))
 ));
 vc_add_param("vc_row", array(
@@ -550,6 +577,7 @@ vc_add_param("vc_row", array(
 		"No" => "without_pattern",
 		"Yes" => "with_pattern"
 	),
+	'save_always' => true,
 	"param_name" => "background_image_as_pattern",
 	"description" => "",
 	"dependency" => Array('element' => "row_type", 'value' => array('row'))
@@ -692,6 +720,7 @@ vc_add_param("vc_row",  array(
   "param_name" => "css_animation",
   "admin_label" => true,
   "value" => $animations,
+	'save_always' => true,
   "description" => "",
   "dependency" => Array('element' => "row_type", 'value' => array('row'))
   
@@ -719,7 +748,8 @@ vc_add_param("vc_row_inner", array(
 		"Row" => "row",
 		"Parallax" => "parallax",
 		"Expandable" => "expandable"
-	)
+	),
+	'save_always' => true
 	
 ));
 vc_add_param("vc_row_inner", array(
@@ -740,6 +770,7 @@ vc_add_param("vc_row_inner", array(
 		"Full Width" => "full_width",
 		"In Grid" => "grid"
 	),
+	'save_always' => true,
 	"dependency" => Array('element' => "row_type", 'value' => array('row'))
 ));
 vc_add_param("vc_row_inner", array(
@@ -758,7 +789,8 @@ vc_add_param("vc_row_inner", array(
 		"Left" => "left",
 		"Center" => "center",
 		"Right" => "right"
-	)
+	),
+	'save_always' => true
 	
 ));
 vc_add_param("vc_row_inner", array(
@@ -882,6 +914,7 @@ vc_add_param("vc_row_inner",  array(
 	"param_name" => "css_animation",
 	"admin_label" => true,
 	"value" => $animations,
+	'save_always' => true,
 	"description" => "",
 	"dependency" => Array('element' => "row_type", 'value' => array('row'))
   
@@ -917,6 +950,7 @@ vc_add_param("vc_separator", array(
 		"Transparent"	=>	"transparent",
 		"Small"			=>	"small"
 	),
+	'save_always' => true,
 	"description" => ""
 ));
 
@@ -930,6 +964,7 @@ vc_add_param("vc_separator", array(
 		"Left" => "left",
 		"Right" => "right"
 	),
+	'save_always' => true,
     "dependency" => array("element" => "type", "value" => array("small")),
 	"description" => ""
 ));
@@ -1010,6 +1045,7 @@ vc_add_param("vc_text_separator", array(
 		"No" => "no",
 		"Yes" => "yes"
 	),
+	'save_always' => true
 ));
 vc_add_param("vc_text_separator", array(
 	"type" => "colorpicker",
@@ -1041,6 +1077,7 @@ vc_add_param("vc_single_image",  array(
   "param_name" => "qode_css_animation",
   "admin_label" => true,
   "value" => $animations,
+	'save_always' => true,
   "description" => ""
   
 ));
@@ -1069,6 +1106,7 @@ vc_map( array(
             "heading" => "Icon",
             "param_name" => "icon",
             "value" => $icons,
+			'save_always' => true,
             "description" => ""
         ),
         array(
@@ -1222,6 +1260,7 @@ vc_map( array(
                     "Yes" => "yes",
                     "No" => "no"
                 ),
+				'save_always' => true,
                 "description" => ""
             ),
             array(
@@ -1234,6 +1273,7 @@ vc_map( array(
                     "Dark" => "dark",
                     "Light" => "light"
                 ),
+				'save_always' => true,
                 "description" => "",
                 "dependency" => array("element" => "show_navigation", "value" => array("yes"))
             ),
@@ -1250,6 +1290,7 @@ vc_map( array(
                     "15"        => "15",
                     "Disable"   => "0"
                 ),
+				'save_always' => true,
                 "description" => ""
             ),
             array(
@@ -1262,6 +1303,7 @@ vc_map( array(
                     "Fade"   => "fade_option",
                     "Slide"  => "slide_option"
                 ),
+				'save_always' => true,
                 "description" => ""
             ),
             array(
@@ -1300,6 +1342,7 @@ vc_map( array(
                     "Masonry with space" => "masonry_with_space",
                     "Masonry with space (image only)" => "masonry_with_space_without_description",
 				),
+				'save_always' => true,
 				"description" => ""
 			),
             array(
@@ -1317,6 +1360,7 @@ vc_map( array(
                     "Slow Zoom" => "slow_zoom",
                     "Split Up" => "split_up"
                 ),
+				'save_always' => true,
                 "dependency" => array('element' => "type", 'value' => array('standard', 'standard_no_space', 'masonry_with_space'))
             ),
             array(
@@ -1326,7 +1370,7 @@ vc_map( array(
                 "heading" => "Hover Animation Type",
                 "param_name" => "hover_type_text_on_hover_image",
                 "value" => array(
-                    "Deafult" => "default",
+                    "Default" => "default",
                     "Subtle Vertical" => "subtle_vertical_hover",
                     "Image Subtle Rotate Zoom" => "image_subtle_rotate_zoom_hover",
                     "Image Text Zoom" => "image_text_zoom_hover",
@@ -1335,6 +1379,7 @@ vc_map( array(
                     "Slow Zoom" => "slow_zoom",
                     "Split Up" => "split_up"
                 ),
+				'save_always' => true,
                 "dependency" => array('element' => "type", 'value' => array('hover_text', 'hover_text_no_space', 'masonry_with_space_without_description'))
             ),
             array(
@@ -1353,6 +1398,7 @@ vc_map( array(
                     "Slow Zoom" => "slow_zoom",
                     "Split Up" => "split_up"
                 ),
+				'save_always' => true,
                 "dependency" => array('element' => "type", 'value' => array('masonry'))
             ),
 			array(
@@ -1891,6 +1937,7 @@ vc_map( array(
 				"heading" => "Carousel Slider",
 				"param_name" => "carousel",
 				"value" => $carousel_sliders,
+				'save_always' => true,
 				"description" => ""
 			),
 			array(
@@ -1961,6 +2008,7 @@ vc_map( array(
                 "No" => "no",
                 "Yes" => "yes"
             ),
+			'save_always' => true,
             "description" => ""
         ),
         array(
@@ -2058,6 +2106,7 @@ vc_map( array(
 				"No" => "false",
 				"Yes" => "true"
 			),
+			'save_always' => true,
 			"description" => "Enabling this option will allow to style map"
 		),
 		array(
@@ -2104,6 +2153,7 @@ vc_map( array(
 				"No" => "false",
 				"Yes" => "true"
 			),
+			'save_always' => true,
 			"description" => "Enabling this option will allow users to zoom in on Map using mouse wheel"
 		)
 	)
@@ -2129,6 +2179,7 @@ vc_map( array(
 					"Zero Counter" => "zero",
 					"Random Counter" => "random"	
 				),
+				'save_always' => true,
 				"description" => ""
 			),
             array(
@@ -2141,6 +2192,7 @@ vc_map( array(
                     "Yes" => "yes",
                     "No" => "no"
                 ),
+				'save_always' => true,
                 "description" => ""
             ),
             array(
@@ -2163,6 +2215,7 @@ vc_map( array(
 					"Right" => "right",	
 					"Center" => "center"	
 				),
+				'save_always' => true,
 				"description" => ""
 			),
 			array(
@@ -2277,6 +2330,7 @@ vc_map( array(
                     "Yes" => "yes",
                     "No" => "no"
                 ),
+				'save_always' => true,
                 "description" => ""
             ),
             array(
@@ -2384,6 +2438,7 @@ vc_map( array(
 					"Parent" => "_parent",	
 					"Top" => "_top"	
 				),
+				'save_always' => true,
 				"description" => ""
 			),
 			array(
@@ -2453,6 +2508,7 @@ vc_map( array(
 					"Parent" => "_parent",	
 					"Top" => "_top"	
 				),
+				'save_always' => true,
 				"description" => ""
 			),
 			array(
@@ -2522,6 +2578,7 @@ vc_map( array(
 					"Parent" => "_parent",	
 					"Top" => "_top"	
 				),
+				'save_always' => true,
 				"description" => ""
 			),
 			array(
@@ -2554,6 +2611,7 @@ vc_map( array(
 				"heading" => "Icon",
 				"param_name" => "icon",
 				"value" => $icons,
+				'save_always' => true,
 				"description" => ""
 				),
             array(
@@ -2565,6 +2623,7 @@ vc_map( array(
                     "Circle"        => "circle",
                     "Transparent"   => "transparent"
                 ),
+				'save_always' => true,
                 "description" => ""
             ),
 			array(
@@ -2639,6 +2698,7 @@ vc_map( array(
                     "Yes"       => "yes",
                     "No"        => "no"
                 ),
+				'save_always' => true,
                 "description"   => ""
             ),
             array(
@@ -2651,6 +2711,7 @@ vc_map( array(
                     "Yes"       => "yes",
                     "No"        => "no"
                 ),
+				'save_always' => true,
                 "description"   => "",
                 "dependency"    => array("element" => "full_width", "value" => "yes")
             ),
@@ -2664,6 +2725,7 @@ vc_map( array(
 					"Normal" => "normal",
 					"With Icon" => "with_icon"	
 				),
+				'save_always' => true,
 				"description" => ""
 			),
 			array(
@@ -2672,6 +2734,7 @@ vc_map( array(
 				"heading" => "Icon",
 				"param_name" => "icon",
 				"value" => $icons,
+				'save_always' => true,
 				"description" => "",
 				"dependency" => Array('element' => "type", 'value' => array('with_icon'))
 				),
@@ -2769,6 +2832,7 @@ vc_map( array(
 				"heading" => "Text Font Weight",
 				"param_name" => "text_font_weight",
 				"value" => $font_weight_array,
+				'save_always' => true,
 				"description" => ""
 			),
 			array(
@@ -2788,6 +2852,7 @@ vc_map( array(
                     "Yes" => "yes",
                     "No" => "no"
                 ),
+				'save_always' => true,
                 "description" => ""
             ),
 			array(
@@ -2970,6 +3035,7 @@ vc_map( array(
                     "Yes" => "yes",
                     "No" => "no"
                 ),
+				'save_always' => true,
                 "description" => ""
             ),
             array(
@@ -3030,7 +3096,8 @@ vc_map( array(
 				"class" => "",
 				"heading" => "Icon",
 				"param_name" => "icon",
-				"value" => $icons
+				"value" => $icons,
+				'save_always' => true
 				),
 			array(
 				"type" => "colorpicker",
@@ -3058,7 +3125,8 @@ vc_map( array(
 					"Blank" => "_blank",	
 					"Parent" => "_parent",
 					"Top" => "_top"	
-				)
+				),
+				'save_always' => true
 			),
             array(
                 "type" => "textfield",
@@ -3249,6 +3317,7 @@ vc_map( array(
 					"Normal" => "normal",
 					"With Icon" => "with_icon"	
 				),
+				'save_always' => true,
 				"description" => ""
 			),
 			array(
@@ -3257,6 +3326,7 @@ vc_map( array(
 				"heading" => "Icon",
 				"param_name" => "icon",
 				"value" => $icons,
+				'save_always' => true,
 				"description" => "",
 				"dependency" => Array('element' => "type", 'value' => array('with_icon'))
 				),
@@ -3271,6 +3341,7 @@ vc_map( array(
 					"Medium" => "fa-2x",
 					"Large" => "fa-3x"
 				),
+				'save_always' => true,
 				"description" => "",
 				"dependency" => Array('element' => "type", 'value' => array('with_icon'))
 			),
@@ -3487,6 +3558,7 @@ vc_map( array(
 					"Yes" => "yes",
 					"No" => "no"
 				),
+				'save_always' => true,
 				"description" => ""
 			),
 			array(
@@ -3578,6 +3650,7 @@ vc_map( array(
 				"heading" => "Icon",
 				"param_name" => "icon",
 				"value" => $icons,
+				'save_always' => true,
 				"description" => ""
 				),
 			array(
@@ -3593,6 +3666,7 @@ vc_map( array(
 					"Large" => "fa-4x",
 					"Very Large" => "fa-5x"	
 				),
+				'save_always' => true,
 				"description" => ""
 			),
 			array(
@@ -3995,6 +4069,7 @@ vc_map( array(
 					"Circle" => "circle",
 					"Square" => "square"	
 				),
+				'save_always' => true,
 				"description" => ""
 			),
 			array(
@@ -4003,6 +4078,7 @@ vc_map( array(
 				"heading" => "Icon",
 				"param_name" => "icon",
 				"value" => $icons,
+				'save_always' => true,
 				"description" => ""
 				),
 			array(
@@ -4018,6 +4094,7 @@ vc_map( array(
 					"Large" => "large",
 					"Very Large" => "very_large",
 				),
+				'save_always' => true,
 				"description" => ""
 			),
 			array(
@@ -4183,6 +4260,7 @@ vc_map( array(
                 "Three"     => "three_columns",
                 "Four"      => "four_columns",
             ),
+			'save_always' => true,
             "description" => ""
         )
     ),
@@ -4241,7 +4319,8 @@ vc_map( array(
 				"value" => array(
 					"Yes" => "yes",
 					"No" => "no"
-				)
+				),
+				'save_always' => true
 			),
             array(
                 "type" => "textfield",
@@ -4298,6 +4377,7 @@ vc_map( array(
 					"No" => "no",
 					"Yes" => "yes"	
 				),
+				'save_always' => true,
 				"description" => ""
 			),
             array(
@@ -4384,6 +4464,7 @@ vc_map( array(
 					"Normal" => "normal",
 					"Italic" => "italic"	
 				),
+				'save_always' => true,
 				"description" => ""
 			),
 			array(
@@ -4397,6 +4478,7 @@ vc_map( array(
 					"Center" => "center",
 					"Right" => "right"	
 				),
+				'save_always' => true,
 				"description" => ""
 			),
 			array(
@@ -4427,6 +4509,7 @@ vc_map( array(
 					"Overline" => "overline",
 					"Line Through" => "line-through"	
 				),
+				'save_always' => true,
 				"description" => ""
 			),
 			array(
@@ -4439,6 +4522,7 @@ vc_map( array(
 					"No" => "no",
 					"Yes" => "yes"
 				),
+				'save_always' => true,
 				"description" => ""
 			),
             array(
@@ -4541,6 +4625,7 @@ vc_map( array(
 					"Circle" => "circle",
 					"Number" => "number"
 				),
+				'save_always' => true,
 				"description" => ""
 			),
             array(
@@ -4553,6 +4638,7 @@ vc_map( array(
 					"Circle" => "circle_number",
 					"Transparent" => "transparent_number"
 				),
+				'save_always' => true,
 				"description" => "",
                 "dependency" => array('element' => "style", 'value' => array('number'))
 			),
@@ -4566,6 +4652,7 @@ vc_map( array(
 					"No" => "no",
 					"Yes" => "yes"
 				),
+				'save_always' => true,
 				"description" => ""
 			),
             array(
@@ -4617,6 +4704,7 @@ vc_map( array(
                         "Large" => "fa-4x",
                         "Very Large" => "fa-5x"
                     ),
+					'save_always' => true,
                     "description" => ""
                 ),
                 array(
@@ -4630,6 +4718,7 @@ vc_map( array(
                         "Circle" => "circle",
                         "Square" => "square"
                     ),
+					'save_always' => true,
                     "description" => ""
                 ),
                 array(
@@ -4698,6 +4787,7 @@ vc_map( array(
                         "Yes" => "yes",
                         "No" => "no"
                     ),
+					'save_always' => true,
                     "description" => "",
                     "dependency" => Array('element' => "type", 'value' => array('square'))
                 ),
@@ -4785,6 +4875,7 @@ vc_map( array(
                         "Blank" => "_blank",
                         "Parent" => "_parent"
                     ),
+					'save_always' => true,
                     "description" => ""
                 )
             )
@@ -4810,6 +4901,7 @@ vc_map( array(
                     "Square" => "square_social",
 					"Normal" => "normal_social"
 				),
+				'save_always' => true,
 				"description"       => ""
 			)),
 			$qodeIconCollections->getSocialVCParamsArray(),
@@ -4824,6 +4916,7 @@ vc_map( array(
                         "No"            => "no",
                         "Yes"           => "yes",
                     ),
+					'save_always' => true,
                     "description"       => ""
                 ),
                 array(
@@ -4838,6 +4931,7 @@ vc_map( array(
                         "Large"         => "fa-3x",
                         "Very Large"    => "fa-4x"
                     ),
+					'save_always' => true,
                     "description"       => "",
                     "dependency"        => array('element' => 'use_custom_size', 'value' => array('no'))
                 ),
@@ -4879,6 +4973,7 @@ vc_map( array(
                         "Blank"         => "_blank",
                         "Parent"        => "_parent"
                     ),
+					'save_always' => true,
                     "description"       => ""
                 ),
                 array(
@@ -4993,6 +5088,7 @@ vc_map( array(
                         "Normal" => "normal",
                         "Icon in a box" => "icon_in_a_box"
                     ),
+					'save_always' => true,
                     "description" => ""
                 ),
                 array(
@@ -5034,6 +5130,7 @@ vc_map( array(
 					"Circle" => "circle",
 					"Square" => "square"	
 				),
+				'save_always' => true,
 				"description" => ""
 			),
             array(
@@ -5048,6 +5145,7 @@ vc_map( array(
                     "Left From Title" => "left_from_title",
                     "Right" => "right"
                 ),
+				'save_always' => true,
                 "description" => "Icon Position (only for normal box type)",
                 "dependency" => Array('element' => "box_type", 'value' => array('normal'))
             ),
@@ -5074,6 +5172,7 @@ vc_map( array(
 					"Large" => "fa-4x",
 					"Very Large" => "fa-5x"	
 				),
+				'save_always' => true,
 				"description" => ""
 			),
             array(
@@ -5086,6 +5185,7 @@ vc_map( array(
                     "No" => "no",
                     "Yes" => "yes"
                 ),
+				'save_always' => true,
                 "description" => __("Select Yes if you want to use custom icon size and margin")
             ),
 			array(
@@ -5327,6 +5427,7 @@ vc_map( array(
 					"Boxes" => "boxes",
 					"Boxes With Dividers" => "dividers"
 				),
+				'save_always' => true,
 				"description" => ""
 			),
             array(
@@ -5349,6 +5450,7 @@ vc_map( array(
 					"Three" => "3",
 					"Four" => "4"
 				),
+				'save_always' => true,
                 "description" => "",
                 "dependency" => Array('element' => "type", 'value' => array('boxes','dividers'))
             ),
@@ -5365,6 +5467,7 @@ vc_map( array(
 					"Four"  => "4",
 					"Five"  => "5"
 				),
+				'save_always' => true,
                 "description" => "",
                 "dependency" => Array('element' => "type", 'value' => array('boxes','dividers'))
             ),	
@@ -5392,6 +5495,7 @@ vc_map( array(
 					"Title" => "title",
 					"Date" => "date"
 				),
+				'save_always' => true,
 				"description" => ""
 			),
 			array(
@@ -5404,6 +5508,7 @@ vc_map( array(
 					"ASC" => "ASC",
 					"DESC" => "DESC"
 				),
+				'save_always' => true,
 				"description" => ""
 			),
 			array(
@@ -5533,6 +5638,7 @@ vc_map( array(
 					"Title" => "title",
 					"Date" => "date"
 				),
+				'save_always' => true,
 				"description" => ""
 			),
 			array(
@@ -5545,6 +5651,7 @@ vc_map( array(
 					"ASC" => "ASC",
 					"DESC" => "DESC"
 				),
+				'save_always' => true,
 				"description" => ""
 			),
 			array(
@@ -5902,6 +6009,7 @@ vc_map( array(
 				"heading" => "Icon",
 				"param_name" => "icon",
 				"value" => $icons,
+				'save_always' => true,
 				"description" => ""
 			),
 			array(
@@ -5916,6 +6024,7 @@ vc_map( array(
 					"Large" => "fa-4x",
 					"Very Large" => "fa-5x"
 				),
+				'save_always' => true,
 				"description" => ""
             ),
 			array(
@@ -6104,7 +6213,8 @@ vc_map( array(
                     "Self" => "_self",
                     "Blank" => "_blank",
                     "Parent" => "_parent"
-                )
+                ),
+				'save_always' => true
 			),
             array(
 				"type" => "dropdown",
@@ -6351,6 +6461,7 @@ vc_map( array(
 				"heading" => "Social Icon 1",
 				"param_name" => "team_social_icon_1",
 				"value" =>$social_icons_array,
+				'save_always' => true
 			),
 			array(
 				"type" => "textfield",
@@ -6379,6 +6490,7 @@ vc_map( array(
 				"heading" => "Social Icon 2",
 				"param_name" => "team_social_icon_2",
 				"value" =>$social_icons_array,
+				'save_always' => true
 			),
 			array(
 				"type" => "textfield",
@@ -6407,6 +6519,7 @@ vc_map( array(
 				"heading" => "Social Icon 3",
 				"param_name" => "team_social_icon_3",
 				"value" =>$social_icons_array,
+				'save_always' => true
 			),
 			array(
 				"type" => "textfield",
@@ -6435,6 +6548,7 @@ vc_map( array(
 				"heading" => "Social Icon 4",
 				"param_name" => "team_social_icon_4",
 				"value" =>$social_icons_array,
+				'save_always' => true
 			),
 			array(
 				"type" => "textfield",
@@ -6463,6 +6577,7 @@ vc_map( array(
 				"heading" => "Social Icon 5",
 				"param_name" => "team_social_icon_5",
 				"value" =>$social_icons_array,
+				'save_always' => true
 			),
 			array(
 				"type" => "textfield",
@@ -6537,6 +6652,7 @@ vc_map( array(
                     "Background Color" => "background_color_type",
                     "Background Image" => "background_image_type"
                 ),
+				'save_always' => true,
                 "description" => ""
             ),
             array(
@@ -6571,6 +6687,7 @@ vc_map( array(
                 "heading" => "Icon",
                 "param_name" => "icon",
                 "value" => $icons,
+				'save_always' => true,
                 "description" => ""
             ),
             array(
@@ -6586,6 +6703,7 @@ vc_map( array(
                     "Large" => "fa-4x",
                     "Very Large" => "fa-5x" 
                 ),
+				'save_always' => true,
                 "description" => ""
             ),
             array(
@@ -7090,7 +7208,8 @@ vc_map( array(
             "value" => array(
                 "No" => "hide_separator",
                 "Yes" => "show_separator"
-            )
+            ),
+			'save_always' => true
         ),
     )
 ) );
@@ -7267,6 +7386,7 @@ vc_map( array(
                     "Yes" => "yes",
                     "No" => "no"
                 ),
+				'save_always' => true,
                 "description" => "Default value is Yes",
             ),
             array(
@@ -7329,6 +7449,7 @@ vc_map( array(
                     "Yes" => "yes",
                     "No" => "no"
                 ),
+				'save_always' => true,
                 "description" => "Default value is Yes, does not affect Carousel type - post info position bottom",
             ),
             array(
@@ -7351,6 +7472,7 @@ vc_map( array(
                     "Yes" => "yes",
                     "No" => "no"
                 ),
+				'save_always' => true,
                 "description" => "Default value is Yes",
                 "dependency" => array('element' => "type", 'value' => array('simple'))
             ),
@@ -7398,6 +7520,7 @@ vc_map( array(
 					"No"  => "no",
 					"Yes" => "yes"
 				),
+				'save_always' => true,
 				"description" => "",
                 "dependency" => array('element' => "info_position", 'value' => array('info_in_bottom_always'))
 			),
@@ -7421,6 +7544,7 @@ vc_map( array(
 					"No"  => "no",
 					"Yes" => "yes"
 				),
+				'save_always' => true,
 				"description" => "",
 				"dependency" => array('element' => "type", 'value' => array('simple'))
 			),
@@ -7454,6 +7578,7 @@ vc_map( array(
 					"Yes" => "yes",
 					"No"  => "no"
 				),
+				'save_always' => true,
 				"description" => "",
                 "dependency" => array('element' => "type", 'value' => array('simple'))
 			),
@@ -7513,6 +7638,7 @@ vc_map( array(
 				    "DESC" => "DESC",
 				    "ASC" => "ASC"
 				),
+				'save_always' => true,
 				"description" => ""
 			),
 			array(
@@ -7562,6 +7688,7 @@ vc_map( array(
                     "Five"      => "five_columns",
                     "Six"       => "six_columns"
                 ),
+				'save_always' => true,
                 "description" => ""
             )
         ),
@@ -7629,6 +7756,7 @@ vc_map( array(
                     "Four"      => "four_columns",
                     "Five"      => "five_columns"
                 ),
+				'save_always' => true,
                 "description" => ""
             )
         ),
@@ -7680,6 +7808,7 @@ vc_map( array(
 				"heading" => "Icon",
 				"param_name" => "icon",
 				"value" => $icons,
+				'save_always' => true,
 				"description" => ""
 			),
 			array(
@@ -7763,6 +7892,7 @@ vc_map( array(
                     "Four"      => "four_columns",
                     "Five"      => "five_columns"
                 ),
+				'save_always' => true,
                 "description" => ""
             ),
             array(
@@ -7773,7 +7903,8 @@ vc_map( array(
 				"value" => array(
                     "No"   => "no_line",
 					"Yes" => "with_line",
-				)
+				),
+				'save_always' => true
             )
         ),
         "js_view" => 'VcColumnView'
@@ -7797,7 +7928,8 @@ vc_map( array(
 					"Icon in Process" => "icon_type",
 					"Image" => "image_type",	
 					"Text in Process" => "text_type"
-				)
+				),
+				'save_always' => true
 			),
 			array(
 				"type" => "colorpicker",
@@ -7837,6 +7969,7 @@ vc_map( array(
 				"heading" => "Icon",
 				"param_name" => "icon",
 				"value" => $icons,
+				'save_always' => true,
 				"dependency" => array('element' => "type", 'value' => array("icon_type"))
 			),
 			array(
@@ -7852,6 +7985,7 @@ vc_map( array(
 					"Large" => "fa-4x",
 					"Very Large" => "fa-5x"
 				),
+				'save_always' => true,
 				"dependency" => array('element' => "type", 'value' => array("icon_type"))
 			),
 			array(
@@ -8149,6 +8283,7 @@ vc_map( array(
 				"Three"     => "three_columns",
 				"Four"      => "four_columns"
 			),
+			'save_always' => true,
 			"description" => ""
 		),
 		array(
@@ -8251,6 +8386,7 @@ vc_map( array(
 					"No" => "no",
 					"Yes" => "yes"
 				),
+				'save_always' => true,
 				"description" => ""
 			),
 			array(
@@ -8263,6 +8399,7 @@ vc_map( array(
 					'Bottom of Page' => 'bottom',
 					'Center of Page' => 'center'
 				),
+				'save_always' => true,
 				"description" => "",
 				"dependency" => array("element" => "advanced_animations", "value" => array("yes"))
 			),
@@ -8285,6 +8422,7 @@ vc_map( array(
 					"Center of Page" => "center",
 					"Top of Page" => "top-bottom"
 				),
+				'save_always' => true,
 				"description" => "",
 				"dependency" => array("element" => "advanced_animations", "value" => array("yes"))
 			),
@@ -8398,6 +8536,7 @@ vc_map( array(
 				"right"     => "right",
 				"center"      => "center"
 			),
+			'save_always' => true,
 			"description" => ""
 		)
 
@@ -8567,6 +8706,7 @@ vc_map( array(
 					"Date" => "date",
 					"Title" => "title",
 				),
+				'save_always' => true,
 				"description" => ""
 			),
 			array(
@@ -8579,6 +8719,7 @@ vc_map( array(
 					"DESC" => "desc",
 					"ASC" => "asc"
 				),
+				'save_always' => true,
 				"description" => ""
 			)
 		)
@@ -8619,6 +8760,7 @@ vc_map( array(
 					"Date" => "date",
 					"Title" => "title",
 				),
+				'save_always' => true,
 				"description" => ""
 			),
 			array(
@@ -8631,6 +8773,7 @@ vc_map( array(
 					"DESC" => "desc",
 					"ASC" => "asc"
 				),
+				'save_always' => true,
 				"description" => ""
 			),
 		)
@@ -8671,6 +8814,7 @@ vc_map( array(
 					"Date" => "date",
 					"Title" => "title",
 				),
+				'save_always' => true,
 				"description" => ""
 			),
 			array(
@@ -8683,6 +8827,7 @@ vc_map( array(
 					"DESC" => "desc",
 					"ASC" => "asc"
 				),
+				'save_always' => true,
 				"description" => ""
 			),
 		)
@@ -8803,7 +8948,18 @@ if(qode_contact_form_7_installed()){
 			"Custom Style 2"		=> "cf7_custom_style_2",
 			"Custom Style 3"		=> "cf7_custom_style_3"
 		),
+		'save_always' => true,
 		"description" => "You can style each form element individually in Qode Options > Contact Form 7"
 	));
 }
+
+/*** Restore Tabs&Accordion from Deprecated category ***/
+
+$vc_map_deprecated_settings = array (
+	'deprecated' => false,
+	'category' => __( 'Content', 'js_composer' )
+);
+vc_map_update( 'vc_accordion', $vc_map_deprecated_settings );
+vc_map_update( 'vc_tabs', $vc_map_deprecated_settings );
+
 ?>

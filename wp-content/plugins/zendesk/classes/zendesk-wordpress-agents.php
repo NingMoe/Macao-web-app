@@ -35,11 +35,8 @@ class Zendesk_Wordpress_Agents {
     // Current user or a specific user ID.
     $zendesk_user = $user_ID ? get_user_meta( $user_ID, 'zendesk_user_options', true ) : $zendesk_support->zendesk_user;
 
-    if ( isset( $zendesk_user['role'] ) && strcmp( $zendesk_user['role'], 'end-user' ) != 0 ) {
-      return true;
-    } else {
-      return false;
-    }
+    // Check for actual value, expect admin or agent as value 
+    return ( isset( $zendesk_user['role'] ) && in_array( $zendesk_user['role'], array( 'admin', 'agent' ), true ) );
   }
 
   /*

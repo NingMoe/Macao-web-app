@@ -30,7 +30,7 @@ $blogPage->addChild("panel2",$panel2);
       ));
 	$panel2->addChild("category_blog_sidebar",$category_blog_sidebar);
 
-	$blog_hide_comments = new QodeField("yesno","blog_hide_comments","no","Hide Comments","Enabling this option will hide comments on Blog List");
+	$blog_hide_comments = new QodeField("yesno","blog_hide_comments","no","Hide Comments","Enabling this option will hide comments on Blog List and Single Blog Posts");
 	$panel2->addChild("blog_hide_comments",$blog_hide_comments);
 
 	$blog_hide_author = new QodeField("yesno","blog_hide_author","no","Hide Author","Enabling this option will hide author name on Blog List");
@@ -419,7 +419,7 @@ $blogPage->addChild("panel2",$panel2);
 				$blog_masonry_ql_post_info_letterspacing = new QodeField("textsimple","blog_masonry_ql_post_info_letterspacing","","Letter Spacing (px)","This is some description");
 				$row3->addChild("blog_masonry_ql_post_info_letterspacing",$blog_masonry_ql_post_info_letterspacing);
 
-	$blog_large_image_simple_subtitle = new QodeTitle("blog_large_image_simple_subtitle", "Blog Large Image Simple");
+	$blog_large_image_simple_subtitle = new QodeTitle("blog_large_image_simple_subtitle", "Blog Large Image Simple Style");
 	$panel2->addChild("blog_large_image_simple_subtitle", $blog_large_image_simple_subtitle);
 
 	$group7 = new QodeGroup("Box Content Style","Define styles for content box");
@@ -603,7 +603,7 @@ $blogPage->addChild("panel2",$panel2);
 				$blog_large_image_dividers_ql_post_info_letterspacing = new QodeField("textsimple","blog_large_image_dividers_ql_post_info_letterspacing","","Letter Spacing (px)","This is some description");
 				$row3->addChild("blog_large_image_dividers_ql_post_info_letterspacing",$blog_large_image_dividers_ql_post_info_letterspacing);
 
-		$blog_vertical_loop_subtitle = new QodeTitle("blog_vertical_loop_subtitle", "Blog Vertical Loop");
+		$blog_vertical_loop_subtitle = new QodeTitle("blog_vertical_loop_subtitle", "Blog Vertical Loop Style");
 		$panel2->addChild("blog_vertical_loop_subtitle", $blog_vertical_loop_subtitle);
 
 		$group10 = new QodeGroup("Title Style","Define styles for title");

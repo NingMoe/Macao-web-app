@@ -6,7 +6,7 @@ require_once( plugin_dir_path( __FILE__ ) . 'zendesk-wordpress-utilities.php' );
 require_once( plugin_dir_path( __FILE__ ) . 'zendesk-wordpress-logger.php' );
 require_once( plugin_dir_path( __FILE__ ) . 'zendesk-wordpress-tickets.php' );
 
-/*
+/**
  * The Zendesk Ajax Class
  *
  * Handles all the ajax calls to the plugin. Some examples are viewing tickets
@@ -32,7 +32,7 @@ class Zendesk_Wordpress_Ajax {
     return self::$instance;
   }
 
-  /*
+  /**
    * AJAX Response: Convert to Ticket
    *
    * This request responds when attempting to convert a comment into
@@ -40,10 +40,15 @@ class Zendesk_Wordpress_Ajax {
    * simply passes in the current user and the requested comment. The
    * function below does the rest.
    *
+   * @param Zendesk_Wordpress_Agents|null $agents
    */
-  public function _ajax_convert_to_ticket() {
+  public function _ajax_convert_to_ticket($agents = null) {
     global $zendesk_support;
-    $agents = Zendesk_Wordpress_Agents::get_instance();
+
+    if ( empty( $agents ) ) {
+      $agents = Zendesk_Wordpress_Agents::get_instance();
+    }
+
     if ( isset( $_REQUEST['comment_id'] ) && is_numeric( $_REQUEST['comment_id'] ) && $agents->_is_agent() ) {
       $comment_id = $_REQUEST['comment_id'];
       $comment    = get_comment( $comment_id );
@@ -95,10 +100,10 @@ class Zendesk_Wordpress_Ajax {
     }
 
     echo json_encode( $response );
-    die();
+    $this->terminate();
   }
 
-  /*
+  /**
    * AJAX Response: Convert to Ticket POST
    *
    * This requests responds upon the actual posting of the comments
@@ -108,10 +113,14 @@ class Zendesk_Wordpress_Ajax {
    * or public), associating a WordPress comment with the ticket and
    * posting back a WordPress comment as a reply happens here.
    *
+   * @param Zendesk_Wordpress_Agents|null $agents
    */
-  public function _ajax_convert_to_ticket_post() {
+  public function _ajax_convert_to_ticket_post($agents = null) {
     global $zendesk_support;
-    $agents = Zendesk_Wordpress_Agents::get_instance();
+
+    if ( empty( $agents ) ) {
+      $agents = Zendesk_Wordpress_Agents::get_instance();
+    }
 
     // If a different response is not set use this one.
     $response = array(
@@ -210,7 +219,7 @@ class Zendesk_Wordpress_Ajax {
 
     // Return the response JSON
     echo json_encode( $response );
-    die();
+    $this->terminate();
   }
 
   /*
@@ -221,9 +230,13 @@ class Zendesk_Wordpress_Ajax {
    * to agents only.
    *
    */
-  public function _ajax_view_comments() {
+  public function _ajax_view_comments($agents = null) {
     global $zendesk_support;
-    $agents = Zendesk_Wordpress_Agents::get_instance();
+
+    if ( empty( $agents ) ) {
+      $agents = Zendesk_Wordpress_Agents::get_instance();
+    }
+
     if ( isset( $_REQUEST['ticket_id'] ) && is_numeric( $_REQUEST['ticket_id'] ) && $agents->_is_agent() ) {
       $ticket_id = $_REQUEST['ticket_id'];
 
@@ -239,7 +252,7 @@ class Zendesk_Wordpress_Ajax {
           $author = $zendesk_support->api->get_user( $comment->author_id );
 
           if ( is_wp_error( $author ) ) {
-            $author        = null;
+            $author        = new StdClass;
             $author->name  = 'Unknown';
             $author->email = 'unknown@zendesk.com';
           } else {
@@ -290,7 +303,7 @@ class Zendesk_Wordpress_Ajax {
     }
 
     echo json_encode( $response );
-    die();
+    $this->terminate();
   }
 
   /*
@@ -361,9 +374,12 @@ class Zendesk_Wordpress_Ajax {
    * HTML table.
    *
    */
-  public function _ajax_view_ticket() {
+  public function _ajax_view_ticket( $agents = null ) {
     global $zendesk_support;
-    $agents = Zendesk_Wordpress_Agents::get_instance();
+
+    if ( empty( $agents ) ) {
+      $agents = Zendesk_Wordpress_Agents::get_instance();
+    }
 
     if ( isset( $_REQUEST['ticket_id'] ) && is_numeric( $_REQUEST['ticket_id'] ) ) {
 
@@ -373,7 +389,8 @@ class Zendesk_Wordpress_Ajax {
       if ( $agents->_is_agent() ) {
         $ticket = $zendesk_support->api->get_ticket_info( $ticket_id );
       } else {
-        $ticket = $zendesk_support->api->get_request_info( $ticket_id );
+        $request = $zendesk_support->api->get_request_info( $ticket_id );
+        $ticket = $request->request;
       }
 
       // If there was no error fetch further
@@ -519,6 +536,15 @@ class Zendesk_Wordpress_Ajax {
 
     // Output the response array as a JSON object.
     echo json_encode( $response );
-    die();
+    $this->terminate();
+  }
+
+  /**
+   * This is a function to terminate the execution of the PHP. This is protected so we can mock it in the test.
+   *
+   * @param null|string $message
+   */
+  protected function terminate( $message = null ) {
+    die( $message );
   }
 }

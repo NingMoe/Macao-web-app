@@ -34,3 +34,6 @@ $verticalSplitSliderPage->addChild("panel10",$panel10);
 
     $vss_right_panel_size = new QodeField("text","vss_right_panel_size","","Right Slide Panel size (%)","Define size for right slide panel. Note that sum of left and right slide panel should be 100.", array(), array("col_width" => 1));
     $panel10->addChild("vss_right_panel_size",$vss_right_panel_size);
+
+    $vss_responsive_advanced = new QodeField("yesno","vss_responsive_advanced","no","Advanced Responsive","Enable this option for advanced responsive on smaller devices");
+    $panel10->addChild("vss_responsive_advanced",$vss_responsive_advanced);

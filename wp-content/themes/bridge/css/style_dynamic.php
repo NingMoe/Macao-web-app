@@ -1507,6 +1507,7 @@ if(!empty($qode_options_proya['input_background_color']) && qode_is_woocommerce_
     .woocommerce-page input[type='text']:not(.qode_search_field):not(.qty),
     .woocommerce-page input[type='password'],
     .woocommerce-page input[type='email'],
+    .woocommerce-page input[type='tel'],
     .woocommerce textarea,
     .woocommerce-page textarea,
     .woocommerce .select2-container .select2-choice,
@@ -1534,6 +1535,7 @@ if(!empty($qode_options_proya['input_border_color']) && qode_is_woocommerce_inst
     .woocommerce-page input[type='text']:not(.qode_search_field):not(.qty),
     .woocommerce-page input[type='password'],
     .woocommerce-page input[type='email'],
+    .woocommerce-page input[type='tel'],
     .woocommerce textarea,
     .woocommerce-page textarea,
     .woocommerce .select2-container .select2-choice,
@@ -1553,6 +1555,7 @@ if(!empty($qode_options_proya['input_text_color']) && qode_is_woocommerce_instal
     .woocommerce-page input[type='text']:not(.qode_search_field):not(.qty),
     .woocommerce-page input[type='password'],
     .woocommerce-page input[type='email'],
+    .woocommerce-page input[type='tel'],
     .woocommerce textarea,
     .woocommerce-page textarea,
     .woocommerce .select2-container .select2-choice,
@@ -1779,6 +1782,7 @@ h6, h6 a {
         .woocommerce-page input[type='text']:not(.qode_search_field),
         .woocommerce-page input[type='password'],
         .woocommerce-page input[type='email'],
+        .woocommerce-page input[type='tel'],
         .woocommerce textarea,
         .woocommerce-page textarea,
         .woocommerce .select2-container .select2-choice,
@@ -6211,7 +6215,8 @@ if(isset($qode_options_proya['search_label_text_color']) && $qode_options_proya[
     .qode_search_form_2 .qode_search_submit,
 	.qode_search_form_3 .qode_search_close a,
 	.fullscreen_search_holder .search_submit,
-	.qode_search_form  i{
+	.qode_search_form  i,
+	.qode_search_form .qode_icon_in_search{
 		color: <?php echo esc_attr($qode_options_proya['search_icon_color']); ?>;
     }
 <?php } ?>
@@ -6238,7 +6243,8 @@ if(isset($qode_options_proya['search_label_text_color']) && $qode_options_proya[
 	.fullscreen_search_holder .search_submit,
 	.qode_search_form i,
 	.fixed_top_header .qode_search_form_3 .qode_search_close,
-	.qode_search_form i{
+	.qode_search_form i,
+	.qode_search_form .qode_icon_in_search{
 		font-size: <?php echo esc_attr($qode_options_proya['search_icon_size']); ?>px;
     }
 

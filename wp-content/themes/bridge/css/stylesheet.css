@@ -13341,7 +13341,7 @@ body div.pp_default .pp_close:after{
     text-align: left;
 }
 
-.header_bottom .submenu-languages {
+.header_bottom .main_menu .submenu-languages {
     display: none;
 }
 
@@ -20628,6 +20628,10 @@ nav.popup_menu ul li ul li ul li h6{
     left: 20px;
 }
 
+.vertical_split_slider_responsive{
+	display: none;
+}
+
 @media only screen and (max-width: 1000px){
     .vertical_split_slider .ms-left {
         width: 100% !important;
@@ -20643,6 +20647,26 @@ nav.popup_menu ul li ul li ul li h6{
         width: 100% !important;
         z-index: 1;
     }
+}
+
+@media only screen and (max-width: 767px){
+	.vertical_split_screen_initalized body.vss_responsive_adv{
+		overflow-y: visible !important;
+		height: auto !important;
+	}
+
+	.vss_responsive_adv .vertical_split_slider,
+	.vss_responsive_adv #multiscroll-nav {
+		display: none;
+	}
+
+	.vertical_split_slider_responsive{
+		display: block;
+	}
+
+	.vss_responsive_adv .ms-section {
+		background-position: center center;
+	}
 }
 
 /* ==========================================================================

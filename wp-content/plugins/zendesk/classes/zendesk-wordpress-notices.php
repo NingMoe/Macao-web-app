@@ -1,6 +1,6 @@
 <?php
 
-/*
+/**
  * The Notices Class
  *
  * This is a helper class to display notices.

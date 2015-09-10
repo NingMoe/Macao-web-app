@@ -2,13 +2,13 @@
 /**
  * Single Product tabs
  *
- * @author 		WooThemes
- * @package 	WooCommerce/Templates
- * @version     2.0.0
+ * @author  WooThemes
+ * @package WooCommerce/Templates
+ * @version 2.4.0
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
-    exit; // Exit if accessed directly
+	exit;
 }
 
 /**
@@ -24,8 +24,8 @@ if ( ! empty( $tabs ) ) : ?>
 	<div class="q_accordion_holder toggle boxed woocommerce-accordion">
         <?php foreach ( $tabs as $key => $tab ) : ?>
 
-            <h6 class="title-holder clearfix <?php echo $key ?>_tab">
-                <span class="tab-title"><?php echo apply_filters( 'woocommerce_product_' . $key . '_tab_title', $tab['title'], $key ) ?></span>
+            <h6 class="title-holder clearfix <?php echo esc_attr($key) ?>_tab">
+                <span class="tab-title"><?php echo apply_filters( 'woocommerce_product_' . $key . '_tab_title', esc_html( $tab['title'] ), $key ); ?></span>
             </h6>
             <div class="accordion_content">
                 <div class="accordion_content_inner">

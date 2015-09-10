@@ -150,6 +150,7 @@ ul.woocommerce-error li:last-child {
 .woocommerce-page input[type='text']:not(.qode_search_field),
 .woocommerce-page input[type='password'],
 .woocommerce-page input[type='email'],
+.woocommerce-page input[type='tel'],
 .woocommerce textarea,
 .woocommerce-page textarea {
 	background-color: #fff;

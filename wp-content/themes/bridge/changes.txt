@@ -1,3 +1,26 @@
+7.6.1
+- Fixed bug with Bridge version 7.6 and old version of Visual Composer
+- Fixed bug with VC Empty Space shortcode
+
+7.6
+- Added Woocommerce 2.4.4 compatibility
+- Added option for advanced responsive for Vertical Split Slider
+- Updated Visual Composer to 4.6.2
+- Updated Layer Slider to 5.5.1
+- Updated Font Awesome to version 4.4.0
+- Updater rtl.css (Right-to-Left Language Support)
+- Fixed search icon color and size in search bar for Search Slide From Window Top
+- Fixed label for Blog - Hide Comments option
+- Fixed bug with title options in single product pages
+- Fixed Qode Slider zoom animations for different browsers
+- Fixed typo in Portfolio List
+- Fixed bug with WPML language switcher and mobile menu
+- Fixed bug with header style changing on scroll
+- Fixed bug with Vertical Split Slider and Countdown shortcode
+- Fixed bug with full screen section row with video background
+- Fixed bug with Load More for Masonry
+- Fixed rtl bugs with margins on menu items (Sticky Divided header type) and Latest Post shortcode
+
 7.5
 - Added Social Share List shortcode
 - Added Behance Font Awesome icon to social icon shortcode

@@ -20,6 +20,8 @@ class Zendesk_Wordpress_Admin {
 
   protected static $instance = null;
 
+  private function __construct() {}
+
   /*
    * Get an instance of this class
    */
@@ -54,6 +56,11 @@ class Zendesk_Wordpress_Admin {
     add_action( 'manage_comments_custom_column', array( &$zendesk_support, '_comments_columns_action' ), 10, 1 );
     add_action( 'admin_notices', array( &$this, '_wp_admin_notices' ) );
 
+    $this->_register_settings();
+  }
+
+  public function _register_settings() {
+    global $zendesk_support;
     // General Settings
     register_setting( 'zendesk-settings', 'zendesk-settings', array(
       Zendesk_Wordpress_Admin_Settings::get_instance(),
@@ -248,13 +255,22 @@ class Zendesk_Wordpress_Admin {
 
       $agent = $zendesk_support->settings['contact_form_anonymous_user'];
       if ( $zendesk_support->settings['account'] && ! $agents->_is_agent( $agent ) && current_user_can( 'manage_options' ) ) {
-        ?>
-        <div id="message" class="error"><p>
-            <?php printf( __( '<strong>Whoops!</strong> The user specified as the anonymous requests author is not logged in to Zendesk! You can %s or kindly ask them to log in.', 'zendesk' ), sprintf( '<a href="' . admin_url( 'admin.php?page=zendesk-support' ) . '">%s</a>', __( 'change the user', 'zendesk' ) ) ); ?>
-          </p></div>
-      <?php
+        $this->_show_non_admin_message();
       }
     }
+  }
+
+  public function _show_non_admin_message()
+  {
+    echo '<div id="message" class="error"><p>';
+    $change_user_url = '<a href="' . admin_url('admin.php?page=zendesk-support') . '">' . __('change the user', 'zendesk') . '</a>';
+
+    sprintf(
+        __('<strong>Whoops!</strong> The user specified as the anonymous requests author is not logged in to Zendesk! You can %s or kindly ask them to log in.',
+            'zendesk'),
+        $change_user_url
+    );
+    echo '</p></div>';
   }
 
   /*

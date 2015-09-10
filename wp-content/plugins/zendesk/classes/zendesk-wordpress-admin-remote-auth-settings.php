@@ -107,7 +107,7 @@ class Zendesk_Wordpress_Admin_Remote_Auth_Settings {
     global $zendesk_support;
     ?>
     <input type="text" class="regular-text" name="zendesk-settings-remote-auth[token]"
-           value="<?php echo $zendesk_support->remote_auth_settings['token']; ?>"/><br/>
+           value="<?php echo urlencode($zendesk_support->remote_auth_settings['token']); ?>"/><br/>
     <span class="description">
       <?php printf( __( 'Your shared token could be obtained on the %s in the <br /> Single Sign-On section.', 'zendesk' ), sprintf( '<a target="_blank" href="' . trailingslashit( $zendesk_support->zendesk_url ) . 'settings/security">%s</a>', __( 'Account Security page', 'zendesk' ) ) ); ?>
       <br/><br/>

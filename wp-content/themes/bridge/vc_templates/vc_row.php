@@ -201,7 +201,7 @@ if($row_type == 'row') {
 							}
 							$output .= '"';
 							$output .= ($overlay_image !== '' && $overlay_image !== ' ') ? " style='background-image:url(" . $overlay_image[0] . ");'" : '';
-							$output .= '></div>';
+							$output .= '></div><div class="video-wrap">';
 			$output .= '<video class="full_screen_sections_video" width="1920" height="800" poster="'.$v_image.'" controls="controls" preload="auto" loop autoplay muted>';
 							if(!empty($video_webm)) { $output .= '<source type="video/webm" src="'.$video_webm.'">'; }
 							if(!empty($video_mp4)) { $output .= '<source type="video/mp4" src="'.$video_mp4.'">'; }
@@ -211,7 +211,8 @@ if($row_type == 'row') {
 										<param name="flashvars" value="controls=true&file='.$video_mp4.'" />
 										<img src="'.$v_image.'" width="1920" height="800" title="No video playback capabilities" alt="Video thumb" />
 								</object>
-						</video>';
+						</video>
+						</div>';
 		} else {
 		
 			$output .= '<div class="mobile-video-image" style="background-image: url('.$v_image.')"></div><div class="video-overlay';

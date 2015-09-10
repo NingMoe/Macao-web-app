@@ -431,5 +431,5 @@ $panel_cart_page->addChild('woo_cart_title_size', $cart_title_size);
 $cart_title_line_height = new QodeField('text', 'woo_cart_title_line_height', '', 'Line Height (px)', 'Define line height for titles that are displayed on cart page', '', array('col_width' => 3));
 $panel_cart_page->addChild('woo_cart_title_line_height', $cart_title_line_height);
 
-$cart_title_letter_spacing = new QodeField('text', 'woo_cart_title_letter_spacing', '', 'Line Height (px)', 'Define line height for titles that are displayed on cart page', '', array('col_width' => 3));
+$cart_title_letter_spacing = new QodeField('text', 'woo_cart_title_letter_spacing', '', 'Letter Spacing (px)', 'Define letter spacing for titles that are displayed on cart page', '', array('col_width' => 3));
 $panel_cart_page->addChild('woo_cart_title_letter_spacing', $cart_title_letter_spacing);

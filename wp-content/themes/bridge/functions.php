@@ -788,6 +788,25 @@ if(!function_exists('qode_overlapping_content_body_class')) {
     add_filter('body_class', 'qode_overlapping_content_body_class');
 }
 
+if(!function_exists('qode_vss_responsive_body_class')) {
+    /**
+     * Function that adds vertical split slider responsive class to body.
+     * @param $classes array of body classes
+     * @return array with vertical split slider responsive body class added
+     */
+    function qode_vss_responsive_body_class($classes) {
+        global $qode_options_proya;
+
+        if(isset($qode_options_proya['vss_responsive_advanced']) && $qode_options_proya['vss_responsive_advanced'] == 'yes') {
+            $classes[] = 'vss_responsive_adv';
+        }
+
+        return $classes;
+    }
+
+    add_filter('body_class', 'qode_vss_responsive_body_class');
+}
+
 
 if(!function_exists('qode_is_title_hidden')) {
 	/**
@@ -2257,7 +2276,7 @@ if(!function_exists('qode_get_page_id')) {
 	 * @see qode_is_woocommerce_shop()
 	 */
 	function qode_get_page_id() {
-		if(qode_is_woocommerce_installed() && qode_is_woocommerce_shop()) {
+		if(qode_is_woocommerce_installed() && (qode_is_woocommerce_shop() || is_singular('product'))) {
 			return qode_get_woo_shop_page_id();
 		}
 

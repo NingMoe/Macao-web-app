@@ -22,7 +22,14 @@
 		qodefInitPortfolioItemsBox();
 		qodeInitPortfolioItemAcc();
         qodefInitDatePicker();
+		qodefRemoveVCDeprecatedClass();
     });
+    
+    function qodefRemoveVCDeprecatedClass() {
+		$('.wpb-layout-element-button').each( function() {
+			$(this).removeClass('vc_element-deprecated');
+		})
+    }
 
 
 
