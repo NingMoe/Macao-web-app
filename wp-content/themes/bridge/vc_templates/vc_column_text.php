@@ -1,6 +1,6 @@
 <?php
 
-if(version_compare(qode_get_vc_version(), '4.5.3') >= 0) {
+if(version_compare(qode_get_vc_version(), '4.5.9') >= 0) {
 	/**
 	 * Shortcode attributes
 	 * @var $atts

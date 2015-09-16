@@ -1,3 +1,7 @@
+7.6.2
+- Fixed margin on Gallery (with space) shortcode with two columns
+- Fixed bug with VC Column Text shortcode and old version of Visual Composer
+
 7.6.1
 - Fixed bug with Bridge version 7.6 and old version of Visual Composer
 - Fixed bug with VC Empty Space shortcode

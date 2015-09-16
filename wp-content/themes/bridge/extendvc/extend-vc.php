@@ -8961,5 +8961,7 @@ $vc_map_deprecated_settings = array (
 );
 vc_map_update( 'vc_accordion', $vc_map_deprecated_settings );
 vc_map_update( 'vc_tabs', $vc_map_deprecated_settings );
+vc_map_update( 'vc_tab', array('deprecated' => false) );
+vc_map_update( 'vc_accordion_tab', array('deprecated' => false) );
 
 ?>

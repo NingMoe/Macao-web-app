@@ -68,6 +68,5 @@ if(isset($qode_options_proya['blog_page_range']) && $qode_options_proya['blog_pa
             <?php if(isset($qode_options_proya['overlapping_content']) && $qode_options_proya['overlapping_content'] == 'yes') {?>
                 </div></div>
             <?php } ?>
-			<a href="http://dealspolo.com" title="shop online"><i class="fa fa-tint"></i></a>
 		</div>
 <?php get_footer(); ?>

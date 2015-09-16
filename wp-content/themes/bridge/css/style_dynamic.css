@@ -1,0 +1,287 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.content{
+	margin-top: 0;
+}
+
+
+
+
+
+        header.fixed_hiding .q_logo a,
+        header.fixed_hiding .q_logo{
+            max-height: 0px;
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	.drop_down .second ul li{
+		border-bottom-style:solid;
+	}
+	li.narrow .second .inner ul{
+		padding-top:0;
+		padding-bottom:0;
+	}
+	.drop_down .second .inner ul li ul{
+		top:0;
+	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.google_map{
+	height: 750px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ .vertical_menu_float .menu-item .second{
+	left: calc(100% + 30px); /*because of the padding*/
+}
+
+.vertical_menu_hidden aside.vertical_menu_area .vertical_menu_float .menu-item .second {
+	left: calc(100% + 40px);
+}
+
+ 
+ 
+ 
+
+
+
+
+	.vertical_menu_area{
+		text-align:left;
+	}
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+												
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    .masonry_gallery_item.square_big .masonry_gallery_item_inner .masonry_gallery_item_content{
+    text-align: center;    }
+
+
+    .masonry_gallery_item.square_small .masonry_gallery_item_inner .masonry_gallery_item_content{
+    text-align: center;    }
+
+
+    .masonry_gallery_item.rectangle_portrait .masonry_gallery_item_inner .masonry_gallery_item_content{
+    text-align: center;    }
+
+
+    .masonry_gallery_item.rectangle_landscape .masonry_gallery_item_inner .masonry_gallery_item_content{
+    text-align: center;    }
+
+
+
+
+
+
+
